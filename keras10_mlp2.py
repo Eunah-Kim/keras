@@ -1,13 +1,12 @@
 # 1. 데이터
 import numpy as np
-x = np.array([range(1, 101), range(101,201)])
-y = np.array([range(1, 101), range(101,201)])
+x = np.array([range(1, 101), range(101,201), range(301, 401)])
+y = np.array([range(101, 201)])
+# y2 = np.array(range(101, 201))
 
-print(x.shape)  # (2, 100)
-print(y.shape)  # (2, 100)
-
-# x = x.reshape(100, 2)
-# y = y.reshape(100, 2)
+print(x.shape)  # (3, 100)
+print(y.shape)  # (1, 100)
+# print(y2.shape) # (100,)
 
 x = x.transpose()  # np.transpose(x)
 y = y.transpose()  # np.transpose(y)
@@ -31,14 +30,23 @@ from keras.layers import Dense
 
 model = Sequential()
 
-# model.add(Dense(5, input_dim=2))
+# model.add(Dense(5, input_dim=3))
   # input_dim = 2 ; 열이 2개 ; 벡터가 2개
-model.add(Dense(64, input_shape=(2,)))
+model.add(Dense(64, input_shape=(3,)))
 model.add(Dense(64))
 model.add(Dense(32))
-model.add(Dense(8))
+model.add(Dense(16))
+model.add(Dense(4))
+model.add(Dense(1))
+
+'''
+# 안 좋은 모델 만들기
+model.add(Dense(3, input_shape=(3,)))
+model.add(Dense(100))
 model.add(Dense(4))
 model.add(Dense(2))
+model.add(Dense(1))
+'''
 
 model.summary()
 
@@ -46,14 +54,14 @@ model.summary()
 model.compile(loss='mse', optimizer = 'adam', 
               metrics=['mse'])
 
-model.fit(x_train, y_train, epochs = 200, batch_size=5, 
+model.fit(x_train, y_train, epochs = 100, batch_size=20, 
           validation_data=(x_val, y_val))
 
 # 4. 평가 예측
 loss, mae = model.evaluate(x_test, y_test, batch_size=1)
 print('mae: ', mae)
 
-x_prd = np.array([[201,202,203], [204,205,206]])
+x_prd = np.array([[201,202,203], [204,205,206], [207,208,209]])
 x_prd = np.transpose(x_prd)
 aaa = model.predict(x_prd, batch_size=1)
 print(aaa)
