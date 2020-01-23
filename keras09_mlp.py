@@ -6,7 +6,14 @@ y = np.array([range(1, 11), range(11,21)])
 print(x.shape)  # (2, 10)
 print(y.shape)  # (2, 10)
 
+# x = x.reshape(10, 2)
+# y = y.reshape(10, 2)
 
+x = x.transpose()
+y = y.transpose()
+
+print(x.shape)
+print(y.shape)
 
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(
@@ -26,7 +33,7 @@ from keras.layers import Dense
 
 model = Sequential()
 
-# model.add(Dense(5, input_dim=1))
+# model.add(Dense(5, input_dim=2))
 model.add(Dense(5, input_shape=(2,)))
 model.add(Dense(2))
 model.add(Dense(3))
