@@ -44,14 +44,14 @@ output1 = Dense(4)(dense2)
 
 # merege 필요 없음
 
-output_1 = Dense(2)(output1)
+output_1 = Dense(20)(output1)
 output_1 = Dense(3)(output_1)   # 1번째 output 모델
    
-output_2 = Dense(4)(output1)
+output_2 = Dense(30)(output1)
 output_2 = Dense(4)(output_2)
 output_2 = Dense(3)(output_2)   # 2번째 output 모델
 
-output_3 = Dense(5)(output1)
+output_3 = Dense(30)(output1)
 output_3 = Dense(3)(output_3)   # 3번째 output 모델
 # output 모델 수 = 결과 y의 수(y1, y2, y3 ; 3개)
 # output 모델의 마지막 노드수 = y의 column 수
