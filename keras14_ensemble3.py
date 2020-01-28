@@ -38,7 +38,7 @@ from keras.layers import Dense, Input
 # model = Sequential()
 
 input1 = Input(shape=(3,))
-dense1 = Dense(5)(input1)
+dense1 = Dense(15)(input1)
 dense2 = Dense(3)(dense1)
 output1 = Dense(4)(dense2)
 
@@ -48,7 +48,7 @@ output_1 = Dense(20)(output1)
 output_1 = Dense(3)(output_1)   # 1번째 output 모델
    
 output_2 = Dense(30)(output1)
-output_2 = Dense(4)(output_2)
+output_2 = Dense(14)(output_2)
 output_2 = Dense(3)(output_2)   # 2번째 output 모델
 
 output_3 = Dense(30)(output1)
