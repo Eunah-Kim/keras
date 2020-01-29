@@ -36,7 +36,6 @@ print(y3_test.shape)
 # 2. 모델 구성
 from keras.models import Sequential, Model
 from keras.layers import Dense, Input
-
 # model = Sequential()
 
 input1 = Input(shape=(3,))
@@ -51,8 +50,9 @@ dense23 = Dense(4)(dense21)
 output2 = Dense(5)(dense23)
 # 앙상블 시 dense의 수, node의 수가 달라도 상관없음
 
-from keras.layers.merge import concatenate
-merge1 = concatenate([output1, output2])  # 두 모델을 하나로 merge
+from keras.layers.merge import concatenate, Concatenate
+# merge1 = concatenate([output1, output2])  # 두 모델을 하나로 merge
+merge1 = Concatenate()([output1, output2])  # Concatenate ; 클래스로 merge
 
 middle1 = Dense(4)(merge1)
 middle2 = Dense(7)(middle1)
