@@ -1,7 +1,7 @@
 import numpy as np
 from numpy import array
 from keras.models import Sequential
-from keras.layers import Dense, LSTM
+from keras.layers import Dense, LSTM, Reshape
 
 # 1. 데이터
 x = array([[1,2,3], [2,3,4], [3,4,5], [4,5,6],
@@ -14,18 +14,21 @@ x = x.reshape(x.shape[0], x.shape[1], 1)
 
 # 2. 모델구성
 model = Sequential()
-model.add(LSTM(50, activation='relu', input_shape=(3,1)))
-# LSTM input_shape(열, 몇 개씩 자를지) ; 행 무시, 열 3, 1개씩 잘라서
-model.add(Dense(50))
-model.add(Dense(55))
-model.add(Dense(40))
-model.add(Dense(35))
-model.add(Dense(45))
-model.add(Dense(20))
-model.add(Dense(20))
+model.add(LSTM(10, activation='relu', input_shape=(3,1),
+               return_sequences=True)) # return_sequences=True 시, 3차원 데이터로 반환
+model.add(LSTM(2, activation='relu', return_sequences=True))
+model.add(LSTM(3, activation='relu', return_sequences=True))
+model.add(LSTM(4, activation='relu', return_sequences=True))
+model.add(LSTM(5, activation='relu', return_sequences=True))
+model.add(LSTM(6, activation='relu', return_sequences=True))
+model.add(LSTM(7, activation='relu', return_sequences=True))
+model.add(LSTM(8, activation='relu', return_sequences=True))
+model.add(LSTM(9, activation='relu', return_sequences=True))
+model.add(LSTM(10, activation='relu', return_sequences=False))
+model.add(Dense(5, activation='linear'))
 model.add(Dense(1))
 
-# model.summary()
+model.summary()
 
 # 3. 모델 훈련
 model.compile(loss='mse', optimizer = 'adam', metrics=['mae'])
