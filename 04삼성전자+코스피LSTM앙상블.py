@@ -82,7 +82,6 @@ input2 = Input(shape=(5,5))
 dense2 = LSTM(30, activation = 'relu')(input2)
 dense2 = Dense(20)(dense2)
 output2 = Dense(10)(dense2)
-# 앙상블 시 dense의 수, node의 수가 달라도 상관없음
 
 from keras.layers.merge import concatenate
 merge1 = concatenate([output1, output2])
@@ -91,7 +90,6 @@ middle1 = Dense(20)(merge1)
 middle2 = Dense(10)(middle1)
 output = Dense(1)(middle2)
 
-# 마지막에 함수형 모델 정의(input, output layer 명시, 여러 개일 경우 list로 연결)
 model = Model(inputs = [input1, input2], outputs = output)
 
 model.summary()
