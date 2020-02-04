@@ -47,7 +47,7 @@ print(y.shape) #(421, 1)
 # scaler.fit(x)
 # x = scaler.transform(x)
 
-# DNN 모델 만들기
+# LSTM 모델 만들기
 x = x.reshape(421, 5, 5)
 
 from keras.models import Sequential
