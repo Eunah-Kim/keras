@@ -41,7 +41,7 @@ for i in range(len(x)):
 print(x.shape) #(7, 3, 3)
 print(y.shape) #(7, 3)
 
-
+'''
 # DNN 모델 만들기
 x = x.reshape(7, 9)
 
@@ -74,3 +74,4 @@ x_pred = x_pred.reshape(1,9)
 x_pred = model.predict(x_pred)
 print(x_pred)
 
+'''
