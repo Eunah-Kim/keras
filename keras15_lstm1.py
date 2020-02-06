@@ -28,7 +28,14 @@ model.summary()
 
 model.compile(loss='mse', optimizer = 'adam', metrics=['mae'])
 
-model.fit(x, y, epochs = 400, batch_size=1)
+from keras.callbacks import EarlyStopping, TensorBoard
+# early_stopping = EarlyStopping(monitor='loss', patience=55, mode='auto')
+tb_hist = TensorBoard(log_dir='./graph',
+                      histogram_freq=0,
+                      write_graph=True,
+                      write_images=True)
+
+model.fit(x, y, epochs = 400, batch_size=1, callbacks=[tb_hist])
 
 # 4. 평가 예측
 loss, mae = model.evaluate(x, y, batch_size=1)

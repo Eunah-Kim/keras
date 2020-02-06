@@ -15,20 +15,11 @@ model = Sequential()
 model.add(Dense(5, input_dim=1))
 model.add(Dense(3))
 model.add(Dense(1))
-'''
-model.add(Dense(5, input_dim=1))
-model.add(Dense(100))
-model.add(Dense(30))
-model.add(Dense(15))
-model.add(Dense(3))
-model.add(Dense(1))
-'''
+
 
 # 3. 훈련
 model.compile(loss='mse', optimizer = 'adam', 
               metrics=['mse'])
-# metrics : 실행결과를 보여줌
-  # 회귀 > mse/mae(Rmse/Rmae)... , 분류 > acc
 
 model.fit(x, y, epochs = 1000, batch_size=1)
 

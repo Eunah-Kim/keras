@@ -67,8 +67,15 @@ model.compile(loss='mse', optimizer = 'adam',
               metrics=['mae'])
 
 # 2개 이상의 input >> list로 연결
+from keras.callbacks import EarlyStopping, TensorBoard
+# early_stopping = EarlyStopping(monitor='loss', patience=55, mode='auto')
+tb_hist = TensorBoard(log_dir='./graph',
+                      histogram_freq=0,
+                      write_graph=True,
+                      write_images=True)
+
 model.fit(x1_train, [y1_train, y2_train, y3_train], epochs = 100, batch_size=1, 
-          validation_data=(x1_val, [y1_val, y2_val, y3_val]))
+          validation_data=(x1_val, [y1_val, y2_val, y3_val]), callbacks=[tb_hist])
 
 
 # 4. 평가 예측
