@@ -1,3 +1,7 @@
+# LinearSVC, KNeighborsClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
 from keras.models import Sequential
 from keras.layers import Dense
 import numpy
@@ -13,21 +17,17 @@ dataset = numpy.loadtxt("./data/pima-indians-diabetes.csv", delimiter=',')
 x = dataset[:,0:8]
 y = dataset[:,8]
 
-# 모델의 설정
-model = Sequential()
-model.add(Dense(12, activation='relu', input_dim=8))
-model.add(Dense(8, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
-# 모델 컴파일
-model.compile(loss='binary_crossentropy',
-              optimizer='adam',
-              metrics=['accuracy'])
+# 모델의 설정
+model = KNeighborsClassifier(n_neighbors=7)
 
 # 모델 실행
-model.fit(x, y, epochs=200, batch_size=10)
-
+model.fit(x_train, y_train)
 
 # 결과 출력
-print('\n Accuracy: %.4f' %(model.evaluate(x, y)[1]))
+y_predict = model.predict(x_test)
+acc = accuracy_score(y_test, y_predict)
+print('\n Accuracy: %.4f' %acc)
 
