@@ -112,8 +112,5 @@ def RMSE(y_test, y_predict):
     return np.sqrt(mean_squared_error(y_test, y_predict))
 print("2/7 pm 1 기준 종가 RMSE: ", RMSE(y_test, y_predict))
 
-
-#-------  train_test_split를 적용했을 때 결과  -------
+# -----------------------------------------------
 # 2/7 삼성전자 예측 종가:  [[60034.844]]
-# 2/7 pm 1 기준 삼성 주가 : 60,100원
-# 2/7 pm 1 기준 종가 RMSE:  65.15625
