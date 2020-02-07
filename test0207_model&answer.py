@@ -73,7 +73,7 @@ model.add(Dense(1))
 
 model.compile(loss='mae', optimizer='adam', metrics=['mae'])
 
-model.fit(x_train_scaled, y_train, epochs=100, batch_size=25, 
+model.fit(x_train_scaled, y_train, epochs=500, batch_size=25, 
           validation_split=0.25)
 
 loss, mae = model.evaluate(x_test_scaled, y_test, batch_size=1)
@@ -114,6 +114,6 @@ print("2/7 pm 1 기준 종가 RMSE: ", RMSE(y_test, y_predict))
 
 
 #-------  train_test_split를 적용했을 때 결과  -------
-# 2/7 삼성전자 예측 종가:  [[60034.844]]
+# 2/7 삼성전자 예측 종가:  [[60580.473]]
 # 2/7 pm 1 기준 삼성 주가 : 60,100원
-# 2/7 pm 1 기준 종가 RMSE:  65.15625
+# 2/7 pm 1 기준 종가 RMSE:  480.47265625
