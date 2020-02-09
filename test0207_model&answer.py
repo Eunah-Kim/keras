@@ -73,7 +73,7 @@ model.add(Dense(1))
 
 model.compile(loss='mae', optimizer='adam', metrics=['mae'])
 
-model.fit(x_train_scaled, y_train, epochs=500, batch_size=25, 
+model.fit(x_train_scaled, y_train, epochs=100, batch_size=25, 
           validation_split=0.25)
 
 loss, mae = model.evaluate(x_test_scaled, y_test, batch_size=1)
