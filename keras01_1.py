@@ -21,7 +21,7 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer = 'adam', 
               metrics=['mse'])
 
-model.fit(x, y, epochs = 1000, batch_size=1)
+model.fit(x, y, epochs = 100, batch_size=1)
 
 # 4. 평가 예측
 loss, mae = model.evaluate(x, y, batch_size=1)
